@@ -1,5 +1,6 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
+require 'omniauth-twitter'
 Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
@@ -12,6 +13,7 @@ Devise.setup do |config|
   # with default "from" parameter.
   config.mailer_sender = 'support@metahash.com'
   config.password_length = 4..20
+  config.omniauth :twitter, ENV["YNB1bhMpex4y7ERRuCe8hqCA3"], ENV["3QezXzBngsbxZgIdJiGXxjZomXFrXLLgULWT8MoFwSDvAJPJcr"]
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -141,7 +143,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length.
-  config.password_length = 8..128
+  config.password_length = 6..128
 
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly

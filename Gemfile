@@ -11,6 +11,8 @@ gem 'sdoc',                 '0.4.0', group: :doc
 gem 'twitter'
 gem 'devise'
 gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'nifty-generators'
 
 
 group :development, :test do
@@ -30,3 +32,5 @@ group :production do
   gem 'pg',             '0.17.1'
   gem 'rails_12factor', '0.0.2'
 end
+
+gem 'mocha', group: :test
