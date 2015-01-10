@@ -20,3 +20,11 @@
   <% end %>
 </ul>
 
+<ul class = "trends">
+  <%-# name,query,url -%>
+  <%= @trends.each do |trend| %>
+    <li> <%= trend["name"]%>  </li>   
+  <%end %>
+</ul>
+
+

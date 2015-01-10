@@ -17,6 +17,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'nifty-generators'
 gem 'bcrypt',               '3.1.7'
+gem 'rest-client'
 
 
 
