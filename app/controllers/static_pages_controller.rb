@@ -4,11 +4,13 @@ class StaticPagesController < ApplicationController
 
 		client = Twitter::REST::Trends
   		#@trends =client.trends(id=1, options={})
-  	end
+
+		@topics = Topic.all.paginate(page: params[:page])
+  end
 
 
 	def help
 
 	end
-	
+
 end
