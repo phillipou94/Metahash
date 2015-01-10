@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150110004326) do
+ActiveRecord::Schema.define(version: 20150110011318) do
 
   create_table "authentications", force: :cascade do |t|
     t.integer  "user_id"
@@ -23,6 +23,19 @@ ActiveRecord::Schema.define(version: 20150110004326) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "topics", force: :cascade do |t|
+    t.string   "title"
+    t.text     "summary"
+    t.text     "trending_reason"
+    t.string   "picture"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "topics", ["user_id", "created_at"], name: "index_topics_on_user_id_and_created_at"
+  add_index "topics", ["user_id"], name: "index_topics_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -39,6 +52,8 @@ ActiveRecord::Schema.define(version: 20150110004326) do
     t.datetime "updated_at"
     t.string   "username"
     t.boolean  "admin",                  default: false
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
