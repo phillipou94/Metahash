@@ -1,13 +1,9 @@
 <div class="center jumbotron">
 <h1>Welcome to Metahash</h1>
-
-<% if user_signed_in? %>
-	<%= link_to "Log Out", destroy_user_session_path, :method => :delete %>
+<% if logged_in? %>
+  <%= link_to "Logout", logout_path, method: :delete %>
 <% else %>
-	<a href="/users/sign_in">Login</a>
-	<%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %>
+  <%= link_to "Login", sessions_new_path ,{:class=>"button-small white"} %>
 <% end %>
-<h2>
-</h2>
 </div>
 

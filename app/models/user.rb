@@ -1,36 +1,38 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  #devise :database_authenticatable, :registerable,
-        # :recoverable, :rememberable, :trackable, :validatable
-  #devise :omniauthable
+	attr_accessor :remember_token
+	before_save { self.email = email.downcase }
+	validates :username,  presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
+  	validates :email, presence: true, length: { maximum: 255 }, uniqueness: { case_sensitive: false }
+	validates :password, length: { minimum: 6 }
+  	has_secure_password
 
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:twitter]
-       		# Setup accessible (or protected) attributes for your model
- # attr_accessible :email, :password, :password_confirmation
-
- def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    if user
-      return user
-    else
-      registered_user = User.where(:email => auth.uid + "@twitter.com").first
-      if registered_user
-        return registered_user
-      else
-
-        user = User.create(name:auth.extra.raw_info.name,
-                            provider:auth.provider,
-                            uid:auth.uid,
-                            email:auth.uid+"@twitter.com",
-                            password:Devise.friendly_token[0,20],
-                          )
-      end
-
-    end
+  # Returns the hash digest of the given string.
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
   end
 
-  def user_params
-      params.require(:user).permit(:username, :email, :password, :password_confirmation)
+  #returns random token
+  def User.new_token
+    SecureRandom.urlsafe_base64
   end
+
+    # Remembers a user in the database for use in persistent sessions.
+  def remember
+    self.remember_token = User.new_token
+    update_attribute(:remember_digest, User.digest(remember_token))
+  end
+
+    # Forgets a user.
+  def forget
+    update_attribute(:remember_digest, nil)
+  end
+
+    # Returns true if the given token matches the digest.
+  def authenticated?(remember_token)
+    return false if remember_digest.nil?
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+
 end
