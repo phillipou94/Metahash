@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :email
   end
 
+  def load_trends
+    @trends = Twitter.trends(id=1, options={}) # For this demonstration lets keep the tweets limited to the first 5 available.
+  end
+
 end
