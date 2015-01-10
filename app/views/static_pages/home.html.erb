@@ -1,5 +1,9 @@
-<div class="center jumbotron">
-<h1>Welcome to Metahash</h1>
-<h2>
-</h2>
-</div>
+<% provide(:title, 'All Topics') %>
+<h1>All Topics</h1>
+<ul class="users content-float">
+  <% @topics.each do |topic| %>
+  <li>
+    <%= link_to topic.title, topic %>
+  </li>
+  <% end %>
+</ul>

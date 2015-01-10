@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   #devise_for :users, :path_names => { :sign_up => "register" }
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   root                'static_pages#home'
+  get      'topics/new'
+
+  post     'new_topic' => 'topics#new'
   resources :users
+  resources :topics
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

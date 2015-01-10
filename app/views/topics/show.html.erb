@@ -1,0 +1,23 @@
+<% if user_signed_in? %>
+<% provide(:title, @topic.title) %>
+<div class="col-md-16">
+  <section class="user_info content-float">
+    <h1>
+      <%= @topic.title %>
+      <br>
+    </h1>
+
+    <h2>
+      <%= @topic.summary %>
+      <br>
+      <br>
+
+      <%= @topic.trending_reason %>
+      <br>
+      <br>
+      
+    </h2>
+
+  </section>
+</div>
+<% end %>
