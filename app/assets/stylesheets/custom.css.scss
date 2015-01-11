@@ -6,7 +6,7 @@
 $gray-medium-light: #FFEB3B;
 
 $special-blue: rgb(14,41,69);
-$special-white: rgb(196,200,186);
+$special-white: rgb(244,244,244);
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -23,8 +23,9 @@ $special-white: rgb(196,200,186);
  /* header */
 
  .jumbotron {
-    background-color: $special-blue;
-    color: $special-white;
+    background-color: $special-white;
+    color: $special-blue;
+    margin-top: 60px;
  }
 
  .header-title {
@@ -37,16 +38,18 @@ $special-white: rgb(196,200,186);
 
  .button {
     display: inline-block;
-    padding: 1em;
+    padding: 10px;
     background-color: transparent;
     text-decoration: none;
     text-align:center;
     font-family: ElegantLux;
-    color: $special-white;
-    border:$special-white;
+    font-size: 25px;
+    color: $special-blue;
+    border:$special-blue;
     border-style: solid;
     border-width: 1px;
     width:250px;
+    height:50px;
 }
 
 .grow {
@@ -57,7 +60,7 @@ $special-white: rgb(196,200,186);
   transition-property: transform;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  color: $special-white;
+  color: $special-blue;
   background-color: transparent;
   text-decoration: none;
 }
@@ -65,7 +68,7 @@ $special-white: rgb(196,200,186);
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
   background-color: transparent;
-  color: $special-white;
+  color: $special-blue;
   text-decoration: none;
 }
 
@@ -73,13 +76,13 @@ $special-white: rgb(196,200,186);
 
 html {
   overflow-y: scroll;
+  background-color: $special-white
 }
 
 
 body {
-  padding-top: 60px;
-  background-color:#B0BEC5;
-  background-color: #607D8B;
+ /*padding-top: 60px;*/
+  background-color:$special-white;
 
 }
 
@@ -105,6 +108,7 @@ textarea {
 
 .center h1 {
   margin-bottom: 10px;
+  margin-top: 60px;
 }
 
 /* typography */
@@ -118,6 +122,7 @@ h1 {
   font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 30px;
+  margin-top:60px;
   text-align: center;
 }
 
@@ -156,6 +161,131 @@ p {
 .navbar {
   background-color: $special-blue;
 }
+
+
+/* custom side bar */
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #000;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+        position: top;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+
+
+
 
 /* sidebar */
 
