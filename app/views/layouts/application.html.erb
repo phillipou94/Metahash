@@ -1,44 +1,56 @@
 <!DOCTYPE html>
-<html>
+
 <head>
   <title>Metahash</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+<html>
+
 <body>
-  <header class="navbar navbar-fixed-top navbar-inverse">
-    <div class="container">
-      <nav>
-        <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Home", root_path%></li>
+<%= render "layouts/header" %>
+  <%if logged_in? %>
+  <div id="wrapper">
+        <div id="sidebar-wrapper">
 
+            <ul class="sidebar-nav">
 
-          <% if logged_in? %>
-
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Account <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Profile", '#' %></li>
-              <li><%= link_to "Create Topic", new_topic_path, method: "post" %></li>
-
-              <li class="divider"></li>
-              <li>
-                <%= link_to "Logout", logout_path, method: :delete %>
-              </li>
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Trending
+                    </a>
+                </li>
+                <%-#load_trends is in application helper %>
+                <% load_trends %> 
+                <% @array.each do |element| %>
+                  <li><a href = "#"><%=element%></a> </li>
+                <% end %>
+  <% end %>
+                
             </ul>
-          </li>
+        </div>
+</div>
 
-          <% else %>
-          <li><%= link_to "Login", sessions_new_path %></li>
-          <% end %>
 
-         </ul>
-      </nav>
-    </div>
-  </header>
+ 
+    <script src="assets/javascripts/jquery.js"></script>
+
+  
+    <script src="js/bootstrap.min.js"></script>
+
+  
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+
+    });
+    </script>
+
+</body>
+</html>
+<body>
 
   <div class="container">
     <% flash.each do |message_type, message| %>
@@ -48,5 +60,6 @@
     <%= debug(params) if Rails.env.development? %>
     </div>
 
+
 </body>
-</html>
+

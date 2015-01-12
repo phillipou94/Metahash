@@ -1,6 +1,8 @@
 <% provide(:title, 'Metahash') %>
 
 
+
+
 <% if !logged_in? %>
 <div class="center jumbotron">
 	<div class = "header-title">meta#ash</div>
@@ -8,8 +10,12 @@
   <%= link_to "Signup", new_user_path, :class => "button grow" %>
 
 </div>
+
+<% else %> 
+
 <% end %>
 
+<body>
 
 
 <ul class="users content-float">
@@ -22,6 +28,7 @@
 
 <% if false %>
 <ul class = "trends">
+  <%-# defined in static pages controller-%>
   <%-# name,query,url -%>
   <%= @trends.each do |trend| %>
     <li> <%= trend["name"]%>  </li>   
@@ -29,4 +36,4 @@
 </ul>
 <%end %>
 
-
+</body>
