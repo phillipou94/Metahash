@@ -1,39 +1,89 @@
-<% provide(:title, 'Metahash') %>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <% provide(:title, 'Metahash') %>
+</head>
 
 
+<body>
+  <% if !logged_in? %>
+  <div class="center jumbotron">
+   <div class = "header-title">meta#ash</div>
 
+   <%= link_to "Signup", new_user_path, :class => "button grow" %>
+  </div>
+  <% else %> 
+  <div id="wrapper">
+    <div id="sidebar-wrapper">
 
-<% if !logged_in? %>
-<div class="center jumbotron">
-	<div class = "header-title">meta#ash</div>
+      <ul class="sidebar-nav">
 
-  <%= link_to "Signup", new_user_path, :class => "button grow" %>
+        <li class="sidebar-brand">
+          <a href="#">Trending</a>
+        </li>
+        <%-#load_trends is in static pages helper %>
+        <% load_trends %> 
+        <% @array.each do |element| %>
+        <li><a href = "#"><%=element%></a> </li>
+        <% end %>
+
+      </ul>
+  </div>
 
 </div>
 
-<% else %> 
+<!-- Page Content -->
+<div id="page-content-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="center jumbotron">
+          <div class = "topic-title">#title</div>
+        </div>
+        <ul class="users post-float">
+
+          <% @topics.each do |topic| %>
+          <li><%= link_to topic.title, topic %></li>
+          <%= topic.summary %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /#page-content-wrapper -->
+
+
+
+<script src="assets/javascripts/jquery.js"></script>
+
+
+<script src="js/bootstrap.min.js"></script>
+
+
+<script>
+  $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+
+  });
+</script>
 
 <% end %>
-
-<body>
-
-
-<ul class="users content-float">
-  <% @topics.each do |topic| %>
-  <li>
-    <%= link_to topic.title, topic %>
-  </li>
-  <% end %>
-</ul>
 
 <% if false %>
 <ul class = "trends">
   <%-# defined in static pages controller-%>
   <%-# name,query,url -%>
   <%= @trends.each do |trend| %>
-    <li> <%= trend["name"]%>  </li>   
+  <li> <%= trend["name"]%>  </li>   
   <%end %>
 </ul>
 <%end %>
-
 </body>
+</html>

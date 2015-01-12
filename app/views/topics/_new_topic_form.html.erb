@@ -1,9 +1,8 @@
 <% if !params[:topic].nil? %>
 <%= render 'shared/error_messages', object: f.object %>
 <% end %>
+<div class = "submission-form">
 <%= form_for(@topic) do |f| %>
-
-
 <%= f.label :title %>
 <%= f.text_field :title, class: 'form-control' %>
 
@@ -19,3 +18,4 @@
 </div>
 <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
+</div>

@@ -36,6 +36,14 @@ $special-white: rgb(244,244,244);
   text-align: center;
 }
 
+.topic-title {
+  font-family:ElegantLux;
+  font-size: 7em;
+  letter-spacing: -2px;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
  .button {
     display: inline-block;
     padding: 10px;
@@ -441,9 +449,22 @@ input {
 /* posts */
 
 .content-float {
-  margin-top: 20px;
+  margin-top: 80px;
   background-color:#FAFAFA;
-  border-radius: 5px;
+  padding-top: 0px;
+  border-radius: 35px;
+  text-align: center;
+}
+
+.post-float {
+  margin-top: 80px;
+  background-color:#FAFAFA;
+  padding-top: 40px;
+  border-radius: 60px;
+  text-align: left;
+  font-size: 2em;
+  vertical-align: middle;
+
 }
 
 .post-item {
@@ -510,6 +531,11 @@ span.picture {
   input {
     border: 0;
   }
+}
+
+/* post form */
+.submission-form{
+  margin-top: 40px;
 }
 
 /* miscellaneous */
