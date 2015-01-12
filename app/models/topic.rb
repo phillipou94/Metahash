@@ -1,5 +1,8 @@
 class Topic < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :editor, class_name: "User"
+
+  has_many :submissions
+  has_many :users, through: :submissions
 
   default_scope -> { order(created_at: :desc) }
   validates :summary, presence: true, length: { maximum: 499 }

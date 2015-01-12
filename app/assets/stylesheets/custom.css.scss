@@ -1,6 +1,44 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$gray-medium-light: #eaeaea;
+$upvote-color: #FF4500;
+$downvote-color: #5F99CF;
+$none-color: #D3D3D3;
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+@mixin section_sizing {
+  padding: 10px 0;
+  margin-top: 20px;
+  &:first-child {
+    border: 0;
+    padding-top: 0;
+  }
+  .karma {
+    font-weight: bold;
+  }
+  h1, h2, h3 {
+    text-align: left;
+    letter-spacing: -1px;
+    margin-bottom: 3px;
+    margin-top: 0px;
+  }
+  h1 {
+    font-size: 1.4em;
+  }
+  h2 {
+    font-size: 1.1em;
+  }
+  h3 {
+    font-size: 1.0em;
+  }
+}
+
 /* mixins, variables, etc. */
 
 $gray-medium-light: #FFEB3B;
@@ -16,7 +54,7 @@ $special-white: rgb(244,244,244);
 
 @font-face {
   font-family: ElegantLux;
-  src: 
+  src:
     url(ElegantLux-Mager.otf)
  }
 
@@ -557,5 +595,49 @@ span.picture {
     overflow: auto;
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
+  }
+}
+
+/* submissions */
+
+section.submissions {
+  @include section_sizing;
+  padding-left: 0px;
+
+  section.post_info {
+    margin-top: 0px !important;
+    margin-bottom: 10px;
+    padding: 10px 5px 5px 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+  }
+}
+
+section.votes {
+  float: left;
+  padding: 5px 5px 1px 2px;
+  margin-top: 0px !important;
+
+  a:link, a:visited {
+    color: $none-color;
+    text-decoration: none;
+  }
+
+  a:link.upvoted, a:visited.downvoted {
+    color: $upvote-color;
+  }
+
+  a:link.downvoted, a:visited.downvoted {
+    color: $downvote-color;
+  }
+
+  a:hover {
+    color: $gray-medium-light;
+    text-decoration: none;
+  }
+
+  a:active {
+    color: $none-color;
+    text-decoration: none;
   }
 }

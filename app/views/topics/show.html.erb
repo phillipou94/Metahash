@@ -1,6 +1,5 @@
-<% if logged_in? %>
 <% provide(:title, @topic.title) %>
-<div class="col-md-16">
+<div class="col-md-15">
   <section class="user_info content-float">
     <h1>
       <%= @topic.title %>
@@ -15,9 +14,21 @@
       <%= @topic.trending_reason %>
       <br>
       <br>
-      
+
     </h2>
 
   </section>
 </div>
+
+<% if logged_in? %>
+<aside>
+<%= render "shared/submission_form" %>
+</aside>
+<% end %>
+
+<% if @submissions.any? %>
+<section class="submissions">
+  <%= render @submissions %>
+</section>
+<%= will_paginate @submissions %>
 <% end %>

@@ -1,10 +1,18 @@
 class User < ActiveRecord::Base
+
+	has_many :submissions
+	has_many :comments
+	has_many :votes
+
+
 	attr_accessor :remember_token
 	before_save { self.email = email.downcase }
 	validates :username,  presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
   	validates :email, presence: true, length: { maximum: 255 }, uniqueness: { case_sensitive: false }
+
 	validates :password, length: { minimum: 6 }
-  	has_secure_password
+
+	has_secure_password
 
   # Returns the hash digest of the given string.
   def User.digest(string)
