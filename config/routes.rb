@@ -8,12 +8,16 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   root                'static_pages#home'
-  
+
   get      'topics/new'
 
   post     'new_topic' => 'topics#new'
   resources :users
-  resources :topics
+  resources :votes,           only: [:create, :destroy]
+  resources :topics,      only: [:index, :new, :create, :destroy, :show] do
+    resources :submissions,   only: [:new, :create, :destroy]
+  end
+  resources :submissions,     only: [:show, :index]
 
 
 

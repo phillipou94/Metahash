@@ -1,0 +1,11 @@
+<section class="post_info" id="submission-<%= submission.id %>">
+
+  <% if !submission.postable.url.empty?%>
+  <h1><%= link_to submission.content, submission.postable.url %></h1>
+  <% else %>
+  <h1><%=submission.content%></h1>
+  <%end%>
+  <h3>
+    submitted <%= time_ago_in_words(submission.created_at) %> ago
+  </h3>
+</section>
