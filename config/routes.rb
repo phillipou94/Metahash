@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :submissions,   only: [:new, :create, :destroy]
   end
   resources :submissions,     only: [:show, :index]
+  resources :trends
 
 
 

@@ -7,8 +7,8 @@ class Submission < ActiveRecord::Base
 
   default_scope -> { order(created_at: :desc) }
   validates_presence_of :user_id
-  validates :content, presence: true, length: { minimum: 2, maximum: 140 }
-  validates_presence_of :postable
+  validates :content, presence: true, length: { minimum: 2, maximum: 420 }
+  # validates_presence_of :postable
   validates_presence_of :topic_id
 
 
