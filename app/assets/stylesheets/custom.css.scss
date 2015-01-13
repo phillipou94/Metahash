@@ -142,7 +142,7 @@ textarea {
   resize: vertical;
   border: 1px solid #DDD;
   border-radius: 5px;
-  color: $special-white;
+  color: black;
   outline: none;
   height:25px;
   width: 275px;
@@ -610,6 +610,19 @@ section.submissions {
     padding: 10px 5px 5px 10px;
     border: 1px solid gray;
     border-radius: 5px;
+    /* unvisited link */
+    a:link {
+      color: blue;
+    }
+
+    /* visited link */
+    a:visited {
+      color: purple;
+    }
+    a:hover {
+      color: $none-color;
+    }
+
   }
 }
 
