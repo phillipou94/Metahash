@@ -75,11 +75,12 @@ ActiveRecord::Schema.define(version: 20150111232908) do
     t.boolean  "liked"
     t.integer  "user_id"
     t.integer  "votable_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "votable_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_index "votes", ["user_id"], name: "index_votes_on_user_id"
-  add_index "votes", ["votable_id"], name: "index_votes_on_votable_id"
+  add_index "votes", ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
 
 end
