@@ -10,14 +10,16 @@ class StaticPagesController < ApplicationController
 		data = access_token.request(:get, "https://api.twitter.com/1.1/trends/place.json?id=23424977")
 		
 		body = JSON.parse(data.body)
-		trends =body.first["trends"]
-		trends.each do |element|
-			Trend.new(title:element["name"]).save
+		if body.any?
+			trends =body.first["trends"]
+			trends.each do |element|
+				Trend.new(title:element["name"]).save
+			end 
+			@trends = Trend.last(10)
+
+
+			@topics = Topic.all.paginate(page: params[:page])
 		end 
-		@trends = Trend.last(10)
-
-
-		@topics = Topic.all.paginate(page: params[:page])
   end
 
 

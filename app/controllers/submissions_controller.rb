@@ -13,7 +13,7 @@ class SubmissionsController < ApplicationController
       @submission.postable.url = ""
     end
 
-    @current_topic = Topic.find(@submission.topic_id)
+    #@current_topic = Topic.find(@submission.topic_id)
     if @submission.save
       # @submission.update_score
       redirect_to @current_trend

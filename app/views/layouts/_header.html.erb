@@ -2,9 +2,7 @@
     <div class="container">
       <nav>
         <ul class="nav navbar-nav navbar-right">
-        <% if logged_in? %>
-          <li><a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a></li>
-        <%end%>
+        
           <li><%= link_to "Home", root_path%></li>
           <% if logged_in? %>
 
@@ -21,13 +19,24 @@
                 <%= link_to "Logout", logout_path, method: :delete %>
               </li>
             </ul>
+
+         
           </li>
 
           <% else %>
           <li><%= link_to "Login", sessions_new_path %></li>
+
+
           <% end %>
 
          </ul>
+
+         <ul class="nav navbar-nav navbar-left">
+            <% if logged_in? %>
+              <li><a href="#menu-toggle" class="trending-button" id="menu-toggle">Trending</a></li>
+            <%end%>
+
+          </ul>
       </nav>
     </div>
   </header>

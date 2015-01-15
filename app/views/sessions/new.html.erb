@@ -1,9 +1,14 @@
 <% provide(:title, "Log in") %>
-<h1>Log in</h1>
+<h1> </h1>
+<div class= "login_body">
+
+
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:session, url: login_path) do |f| %>
+    <div class = "login_box">
+    <h1>login to your account</h1>
+    <%= form_for(:session,:html => {:class => 'login_form'}, url: login_path) do |f| %>
 
       <%= f.label :username %>
       <%= f.text_field :username, class: 'form-control' %>
@@ -16,9 +21,11 @@
         <span>Remember me on this computer</span>
       <% end %>
 
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+      <%= f.submit "Log in", class: "login_button login_grow" %>
     <% end %>
 
     <p>New user? <%= link_to "Sign up now!", users_new_path %></p>
+    </div>
   </div>
+</div>
 </div>
