@@ -9,16 +9,19 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
   root                'static_pages#home'
 
-  get      'topics/new'
+  #get      'topics/new'
 
-  post     'new_topic' => 'topics#new'
+  #post     'new_topic' => 'topics#new'
   resources :users
   resources :votes,           only: [:create, :destroy]
-  resources :topics,      only: [:index, :new, :create, :destroy, :show] do
-    resources :submissions,   only: [:new, :create, :destroy]
+  resources :topics,      only: [:index, :new, :create, :destroy, :show]
+  #resources :submissions,     only: [:show, :index]
+  resources :trends, only: [:index, :new, :create, :destroy, :show] do 
+     resources :submissions,   only: [:new, :create, :destroy]
+     resources :topics, only: [:new, :create, :destroy]
+
   end
-  resources :submissions,     only: [:show, :index]
-  resources :trends
+
 
 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150112184249) do
+ActiveRecord::Schema.define(version: 20150113235530) do
 
   create_table "authentications", force: :cascade do |t|
     t.integer  "user_id"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20150112184249) do
     t.datetime "updated_at",                null: false
     t.integer  "score",         default: 0
     t.integer  "topic_id"
+    t.integer  "trend_id"
   end
 
   add_index "submissions", ["postable_type", "postable_id"], name: "index_submissions_on_postable_type_and_postable_id"
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(version: 20150112184249) do
     t.integer  "user_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "trend_id"
   end
 
   add_index "topics", ["user_id", "created_at"], name: "index_topics_on_user_id_and_created_at"
@@ -68,10 +70,12 @@ ActiveRecord::Schema.define(version: 20150112184249) do
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "email"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "password_digest"
     t.string   "remember_digest"
+    t.boolean  "is_admin",        default: false
+    t.boolean  "is_editor",       default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

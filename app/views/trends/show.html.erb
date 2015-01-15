@@ -24,10 +24,26 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="center jumbotron">
-          <div class = "topic-title"><%=@trend.title%></div>
+          <div class = "topic-title"><%=@current_trend.title%></div>
+          <% if @current_trend.topics.any?%>
+            <%=render @topic %>
+          <% else %>
+            <%= link_to_function "Create Topic", "$('#hide').toggleClass('hidden-topic-partial')" %>
+
+            <div id="hide" class="hidden-topic-partial"> <%= render "topics/new_topic_form" %> </div>
+
+          <% end %>
+
+          
+
         </div>
         <ul class="users post-float">
-
+          <%= link_to_function "Post", "$('#hide-submission').toggleClass('hidden-submission-partial')" %>
+          <div id="hide-submission" class="hidden-submission-partial"> <%= render "shared/submission_form" %> </div>
+        
+        <div class="class: list-group">
+          <%= render @posts %>
+        </div>
 
 
 
@@ -41,9 +57,6 @@
 
 
 <script src="assets/javascripts/jquery.js"></script>
-
-
-<script src="js/bootstrap.min.js"></script>
 
 
 <script>
