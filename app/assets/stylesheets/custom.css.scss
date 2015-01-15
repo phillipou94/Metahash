@@ -41,7 +41,6 @@ $none-color: #D3D3D3;
 
 /* mixins, variables, etc. */
 
-$gray-medium-light: #FFEB3B;
 
 $special-blue: rgb(14,41,69);
 $special-white: rgb(244,244,244);
@@ -142,7 +141,7 @@ textarea {
   resize: vertical;
   border: 1px solid #DDD;
   border-radius: 5px;
-  color: $special-white;
+  color: black;
   outline: none;
   height:25px;
   width: 275px;
@@ -211,6 +210,7 @@ p {
 
 /* custom side bar */
 
+
 #wrapper {
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
@@ -231,7 +231,7 @@ p {
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #000;
+    background-color: $gray-medium-light;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -610,6 +610,19 @@ section.submissions {
     padding: 10px 5px 5px 10px;
     border: 1px solid gray;
     border-radius: 5px;
+    /* unvisited link */
+    a:link {
+      color: blue;
+    }
+
+    /* visited link */
+    a:visited {
+      color: purple;
+    }
+    a:hover {
+      color: $none-color;
+    }
+
   }
 }
 

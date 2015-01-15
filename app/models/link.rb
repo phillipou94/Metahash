@@ -1,8 +1,8 @@
 class Link < ActiveRecord::Base
 
   has_one :submission, as: :postable
-  validates_presence_of :url
-  validate :url_is_valid_url, on: :create
+  # validates_presence_of :url
+  # validate :url_is_valid_url, on: :create
 
   def url_is_valid_url
     uri = URI.parse(url)
@@ -11,5 +11,5 @@ class Link < ActiveRecord::Base
     end
   rescue URI::InvalidURIError
   end
-  
+
 end

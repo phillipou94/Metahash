@@ -1,5 +1,5 @@
 <% if !params[:topic].nil? %>
-<%= render 'shared/error_messages', object: f.object %>
+<%= render 'shared/error_messages', object: @topic %>
 <% end %>
 <div class = "submission-form">
 	<%= form_for(Topic.new, url: trend_topics_path(params[:id])) do |f| %>
@@ -11,11 +11,18 @@
   			<%= f.text_area :summary %>
 		</div>
 
-
 		<%= f.label :trending_reason %>
 		<div class="field">
   			<%= f.text_area :trending_reason %>
 		</div>
+		
+		<% if false %>
+		<%= f.label :Image_URL%>(Optional)
+		<%= f.text_field :imageURL, class: 'form-control' %>
+		<% end %>
 		<%= f.submit "Submit", class: "btn btn-primary" %>
 	<% end %>
+
+
+
 </div>
