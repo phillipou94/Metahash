@@ -2,22 +2,27 @@
 <%= render 'shared/error_messages', object: @topic %>
 <% end %>
 <div class = "submission-form">
-<%= form_for(@topic) do |f| %>
-<%= f.label :title %>
-<%= f.text_field :title, class: 'form-control' %>
+	<%= form_for(Topic.new, url: trend_topics_path(params[:id])) do |f| %>
+		<%= f.label :title %>
+		<%= f.text_field :title, class: 'form-control' %>
 
-<%= f.label :Image_URL%>(Optional)
-<%= f.text_field :imageURL, class: 'form-control' %>
+		<%= f.label :summary %>
+		<div class="field">
+  			<%= f.text_area :summary %>
+		</div>
 
-<%= f.label :summary %>
-<div class="field">
-  <%= f.text_area :summary %>
-</div>
+		<%= f.label :trending_reason %>
+		<div class="field">
+  			<%= f.text_area :trending_reason %>
+		</div>
+		
+		<% if false %>
+		<%= f.label :Image_URL%>(Optional)
+		<%= f.text_field :imageURL, class: 'form-control' %>
+		<% end %>
+		<%= f.submit "Submit", class: "btn btn-primary" %>
+	<% end %>
 
-<%= f.label :trending_reason %>
-<div class="field">
-  <%= f.text_area :trending_reason %>
-</div>
-<%= f.submit "Submit", class: "btn btn-primary" %>
-<% end %>
+
+
 </div>

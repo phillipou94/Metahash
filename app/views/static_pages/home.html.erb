@@ -13,7 +13,7 @@
 <body>
   <% if !logged_in? %>
   <div class="center jumbotron">
-   <div class = "header-title">meta#ash</div>
+   <div class = "header-title">meta<span>#</span>ash</div>
 
    <%= link_to "Signup", new_user_path, :class => "button grow" %>
   </div>
@@ -22,15 +22,15 @@
     <div id="sidebar-wrapper">
 
       <ul class="sidebar-nav">
-
         <li class="sidebar-brand">
-          <a href="#">Trending</a>
+          <a href="#" id="Trending-Banner">   </a>
         </li>
         <%-#load_trends is in static pages helper %>
         <% load_trends %>
         <% @trends.each do |trend| %>
           <li><%= link_to trend.title, trend %></li>
         <% end %>
+        <li> <%=link_to "All Trends", trends_path %> </li>
 
       </ul>
   </div>

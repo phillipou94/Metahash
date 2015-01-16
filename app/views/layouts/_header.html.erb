@@ -2,12 +2,10 @@
     <div class="container">
       <nav>
         <ul class="nav navbar-nav navbar-right">
-        <% if logged_in? %>
-          <li><a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a></li>
-        <%end%>
           <li><%= link_to "Home", root_path%></li>
-          <% if logged_in? %>
 
+          <% if logged_in? %>
+          <li><%= link_to "Settings", '#' %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Account <b class="caret"></b>
@@ -21,13 +19,33 @@
                 <%= link_to "Logout", logout_path, method: :delete %>
               </li>
             </ul>
+
+         
           </li>
 
           <% else %>
           <li><%= link_to "Login", sessions_new_path %></li>
+
+
           <% end %>
 
          </ul>
+
+         <ul class="nav navbar-nav navbar-left">
+            <% if logged_in? %>
+              <li><a href="#menu-toggle" class="trending-button" id="menu-toggle">Trending</a></li>
+              <li>
+                  <%= form_tag(trends_path, :method => "get", id: "search-form") do %>
+                    <%= text_field_tag :search, params[:search], placeholder: "Search Trends", class: "search_bar" %>
+                  <% end %>
+                
+
+        </li> 
+              
+
+            <%end%>
+
+          </ul>
       </nav>
     </div>
   </header>

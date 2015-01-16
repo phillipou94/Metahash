@@ -1,13 +1,13 @@
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
-    <div class = "submission-form">
-    <%= form_for(@submission, url: topic_submissions_path(@topic.id)) do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
+    <%= form_for(Submission.new, url: trend_submissions_path(params[:id])) do |f| %>
+
+      <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.label :Comment, class: "control-label" %>
       <%= f.text_area :content, class: "form-control" %>
 
-      <%= f.fields_for(@link) do |builder| %>
+      <%= f.fields_for(Link.new) do |builder| %>
         <%= builder.label :url, class: "control-label"%>
         <%= builder.text_field :url, class: "form-control" %>
       <% end %>

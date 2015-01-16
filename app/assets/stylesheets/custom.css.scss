@@ -39,12 +39,13 @@ $none-color: #D3D3D3;
   }
 }
 
+
 /* mixins, variables, etc. */
 
-$gray-medium-light: #FFEB3B;
 
 $special-blue: rgb(14,41,69);
 $special-white: rgb(244,244,244);
+$special-red: #EA413D;
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -74,6 +75,16 @@ $special-white: rgb(244,244,244);
   text-align: center;
 }
 
+.header-title span {
+  color: $special-red;
+}
+
+.trending-button {
+  margin-top:-5px;
+  font-size: 30px;
+  font-family: ElegantLux;
+}
+
 .topic-title {
   font-family:ElegantLux;
   font-size: 7em;
@@ -85,15 +96,15 @@ $special-white: rgb(244,244,244);
  .button {
     display: inline-block;
     padding: 10px;
-    background-color: transparent;
+    background-color: white;
     text-decoration: none;
     text-align:center;
     font-family: ElegantLux;
     font-size: 25px;
-    color: $special-blue;
+    color: $special-red;
     border:$special-blue;
     border-style: solid;
-    border-width: 1px;
+    border-width: 2px;
     width:250px;
     height:50px;
 }
@@ -106,17 +117,20 @@ $special-white: rgb(244,244,244);
   transition-property: transform;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  color: $special-blue;
+  color: $special-red;
   background-color: transparent;
   text-decoration: none;
 }
 .grow:hover, .grow:focus, .grow:active {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-  background-color: transparent;
-  color: $special-blue;
+  -webkit-transform: scale(1.25);
+  transform: scale(1.25);
+
+  background-color: white;
+  color: $special-red;
   text-decoration: none;
 }
+
+
 
 /* universal */
 
@@ -167,7 +181,7 @@ h1 {
   font-family:ElegantLux;
   font-size: 3em;
   letter-spacing: -2px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   margin-top:60px;
   text-align: center;
 }
@@ -206,10 +220,31 @@ p {
 
 .navbar {
   background-color: $special-blue;
+  height:10px;
 }
+
+/* Form wrapper styling */
+ 
+/* Form text input */
+ 
+.search_bar {
+    margin-top:3px;
+    width: 530px;
+    height: 8px;
+    padding: 10px 5px;
+    float: left;    
+    font-size: 20px;
+    font-family: bold "ElegantLux";
+    border: 0;
+    background: rgba(0,0,0,.2);
+    border-radius: 10px 0 0 10px; 
+    color:$special-white;     
+}
+ 
 
 
 /* custom side bar */
+
 
 #wrapper {
     padding-left: 0;
@@ -223,6 +258,9 @@ p {
     padding-left: 250px;
 }
 
+
+
+
 #sidebar-wrapper {
     z-index: 1000;
     position: fixed;
@@ -231,7 +269,7 @@ p {
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #000;
+    background-color: $special-blue;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -256,6 +294,7 @@ p {
 /* Sidebar Styles */
 
 .sidebar-nav {
+    z-index: 1000;
     position: absolute;
     top: 0;
     width: 250px;
@@ -270,15 +309,18 @@ p {
 }
 
 .sidebar-nav li a {
+    font-family: ElegantLux;
+    font-size:20px;
+    margin-bottom:10px;
     display: block;
     text-decoration: none;
-    color: #999999;
+    color: white;
 }
 
 .sidebar-nav li a:hover {
     text-decoration: none;
-    color: #fff;
-    background: rgba(255,255,255,0.2);
+    color: $special-red;
+    background: $special-blue;
 }
 
 .sidebar-nav li a:active,
@@ -288,16 +330,18 @@ p {
 
 .sidebar-nav > .sidebar-brand {
     height: 65px;
-    font-size: 18px;
+    font-size: 30px;
     line-height: 60px;
 }
 
 .sidebar-nav > .sidebar-brand a {
-    color: #999999;
+    margin-top: 5px;
+    font-family: ElegantLux;
+    color: $special-blue;
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
-    color: #fff;
+    color: $special-blue;
     background: none;
 }
 
@@ -480,6 +524,7 @@ input {
     padding-bottom: 30px;
   }
   .row {
+    margin-top:50px;
     width: 100%;
   }
 }
@@ -654,3 +699,71 @@ section.votes {
     text-decoration: none;
   }
 }
+
+/* login and signup */
+
+.login_box {
+  background-color:white;
+  margin-top: 20px;
+  margin-bottom:20px;
+  border-style: solid;
+  border-color: $special-blue;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+.login_form { 
+  margin-top:20px;
+  font-family: ElegantLux;
+  color: $special-blue;
+  font-size:15px;
+  margin-bottom:20px;
+}
+
+.login_body {
+  background-color: white;
+}
+
+ .login_button {
+    display: inline-block;
+    padding: 10px;
+    background-color: white;
+    text-decoration: none;
+    text-align:center;
+    left:50%;
+    font-family: ElegantLux;
+    font-size: 20px;
+    color: $special-red;
+    border:$special-blue;
+    border-style: solid;
+    border-width: 2px;
+    width:250px;
+    height:50px;
+}
+
+.login_grow {
+  display: inline-block;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  color: $special-red;
+  background-color: transparent;
+  text-decoration: none;
+}
+.login_grow:hover, .login_grow:focus, .login_grow:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+
+  background-color: white;
+  color: $special-red;
+  text-decoration: none;
+}
+
+/* for function calls */
+
+.hidden-topic-partial { display:none}
+
+.hidden-submission-partial { display:none}

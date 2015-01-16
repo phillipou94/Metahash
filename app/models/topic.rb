@@ -3,6 +3,7 @@ class Topic < ActiveRecord::Base
 
   has_many :submissions
   has_many :users, through: :submissions
+  belongs_to :trend, dependent: :destroy
 
   default_scope -> { order(created_at: :desc) }
   validates :summary, presence: true, length: { maximum: 499 }

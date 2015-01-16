@@ -1,40 +1,21 @@
-<% provide(:title, @topic.title) %>
-<div class="col-md-15">
-  <section class="user_info content-float">
+
+<section class="post_info" id="topic-<%= topic.id %>">
     <h1>
-      <%= @topic.title %>
+      <%= topic.title %>
       <br>
     </h1>
 
     <h2>
-      <%= @topic.summary %>
+
+     <%= topic.summary%>
       <br>
       <br>
 
-      <%= @topic.trending_reason %>
+      <%=topic.trending_reason %>
       <br>
       <br>
-
-      <% if @topic.imageURL?%>
-      <img src="<%=@topic.imageURL%>">
-      <br>
-      <br>
-      <%end%>
 
     </h2>
 
   </section>
-</div>
 
-<% if logged_in? %>
-<aside>
-  <%= render "shared/submission_form" %>
-</aside>
-<% end %>
-
-<% if @submissions.any? %>
-<section class="submissions">
-  <%= render @submissions %>
-</section>
-<%= will_paginate @submissions %>
-<% end %>

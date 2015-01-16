@@ -1,9 +1,11 @@
 <% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
+<h1> </h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user) do |f| %>
+  <div class = "login_box">
+    <h1>welcome to meta#ash!</h1>
+    <%= form_for(@user, :html => {:class => 'login_form'}) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     
       <%= f.label :username %>
@@ -15,10 +17,11 @@
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.label :password_confirmation, "Password Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-      <%= f.submit "Create my account", class: "btn btn-primary" %>
+      <%= f.submit "Sign Up", class: "login_button login_grow" %>
     <% end %>
   </div>
+</div>
 </div>

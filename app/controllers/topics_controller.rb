@@ -8,11 +8,15 @@ class TopicsController < ApplicationController
     @topics = Topic.all
   end
 
+
   def create
-    @topic = Topic.new(topic_params)
-    if @topic.save
+    @new_topic = Topic.new(topic_params)
+    @new_topic.trend_id = params[:trend_id]
+    @new_topic.user_id = current_user.id 
+   # @current_trend = Trend.find(@new_topic.trend_id)
+    if @new_topic.save
       flash[:success] = "New Topic Created"
-      redirect_to @topic
+      redirect_to root_path
     else
       render 'new'
     end
