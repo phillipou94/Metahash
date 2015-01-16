@@ -39,6 +39,7 @@ $none-color: #D3D3D3;
   }
 }
 
+
 /* mixins, variables, etc. */
 
 
@@ -79,6 +80,7 @@ $special-red: #EA413D;
 }
 
 .trending-button {
+  margin-top:-5px;
   font-size: 30px;
   font-family: ElegantLux;
 }
@@ -127,6 +129,8 @@ $special-red: #EA413D;
   color: $special-red;
   text-decoration: none;
 }
+
+
 
 /* universal */
 
@@ -216,7 +220,27 @@ p {
 
 .navbar {
   background-color: $special-blue;
+  height:10px;
 }
+
+/* Form wrapper styling */
+ 
+/* Form text input */
+ 
+.search_bar {
+    margin-top:3px;
+    width: 530px;
+    height: 8px;
+    padding: 10px 5px;
+    float: left;    
+    font-size: 20px;
+    font-family: bold "ElegantLux";
+    border: 0;
+    background: rgba(0,0,0,.2);
+    border-radius: 10px 0 0 10px; 
+    color:$special-white;     
+}
+ 
 
 
 /* custom side bar */

@@ -7,6 +7,18 @@
         selector: "textarea"
       });
   </script>
+
+
+<script src="assets/javascripts/jquery.js"></script>
+
+
+<script>
+  $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+
+  });
+</script>
 </head>
 
 <body>
@@ -19,10 +31,12 @@
         <li class="sidebar-brand">
           <a href="#" id="Trending-Banner">   </a>
         </li>
+              
         <%-#load_trends is in static pages helper %>
         <% Trend.last(10).each do |trend| %>
            <li><%= link_to trend.title, trend %></li>
         <% end %>
+        <li> <%=link_to "All Trends", trends_path %> </li>
 
       </ul>
   </div>
@@ -67,16 +81,6 @@
 
 
 
-<script src="assets/javascripts/jquery.js"></script>
-
-
-<script>
-  $("#menu-toggle").click(function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
-
-  });
-</script>
 
 <% end %>
 

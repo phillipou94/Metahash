@@ -1,33 +1,19 @@
  <div id="wrapper">
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                        Trending
-                    </a>
-                </li>
-                <li>
-                    <a href="#">#Football</a>
-                </li>
-                <li>
-                    <a href="#">#Live</a>
-                </li>
-                <li>
-                    <a href="#">#NEvsBA</a>
-                </li>
-                <li>
-                    <a href="#">#FunFil</a>
-                </li>
-                <li>
-                    <a href="#">#Dope</a>
-                </li>
+    <div id="sidebar-wrapper">
 
-                <li>
-                    <a href="#">#Apple</a>
-                </li>
-                
-            </ul>
-        </div>
+      <ul class="sidebar-nav">
+
+        <li class="sidebar-brand">
+          <a href="#" id="Trending-Banner">   </a>
+        </li>
+        <%-#load_trends is in static pages helper %>
+        <% Trend.last(10).each do |trend| %>
+           <li><%= link_to trend.title, trend %></li>
+        <% end %>
+
+      </ul>
+  </div>
+
 </div>
 
 
