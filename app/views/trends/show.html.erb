@@ -58,21 +58,23 @@
             <div id="hide" class="hidden-topic-partial"> <%= render "topics/new_topic_form" %> </div>
 
           <% end %>
-
           
 
         </div>
         <ul class="users post-float">
           <%= link_to_function "Post", "$('#hide-submission').toggleClass('hidden-submission-partial')" %>
           <div id="hide-submission" class="hidden-submission-partial"> <%= render "shared/submission_form" %> </div>
-        
-        <div class="class: list-group">
-          <%= render @posts %>
-        </div>
-
-
 
         </ul>
+        <ul>
+        <div class="class: list-group">
+          <% if @posts %>
+            <%= render @posts %>
+          <% end %>
+        </div>
+        </ul>
+
+
       </div>
     </div>
   </div>
