@@ -4,6 +4,9 @@
 
       <%= render 'shared/error_messages', object: f.object %>
 
+      <%= f.label :title, class: "control-label" %>
+      <%= f.text_area :title, class: "form-control" %>
+
       <%= f.label :Comment, class: "control-label" %>
       <%= f.text_area :content, class: "form-control" %>
 

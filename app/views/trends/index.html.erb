@@ -27,7 +27,6 @@
         <% Trend.last(10).each do |trend| %>
            <li><%= link_to trend.title, trend %></li>
         <% end %>
-         <li> <%=link_to "All Trends", trends_path %> </li>
 
       </ul>
   </div>

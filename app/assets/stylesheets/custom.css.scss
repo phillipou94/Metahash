@@ -621,6 +621,46 @@ span.picture {
   margin-top: 40px;
 }
 
+/* posts partial */
+
+.submissions {
+  margin-left: 70px;
+  margin-right :70px;
+  margin-bottom: 30px;
+  padding: 20%;
+
+}
+
+.submission_title {
+  font-family: ElegantLux;
+  font-weight: bold;
+  font-size:35px;
+  margin-bottom: 25px;
+}
+
+.submission_content {
+  font-size: 12px;
+  margin-left: 80px;
+  margin-right: 10px;
+}
+
+.submission_link:hover {
+  color: $special-blue;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+/* gravatar */
+
+.gravatar {
+
+  border-radius: 50%;
+  width: 55px;
+  height:55px;
+  margin-left:15px;
+}
+
+
 /* miscellaneous */
 
 .debug_dump {
@@ -662,10 +702,10 @@ section.submissions {
 
     /* visited link */
     a:visited {
-      color: purple;
+      /*color: purple;*/
     }
     a:hover {
-      color: $none-color;
+      color: $special-red;
     }
 
   }
@@ -690,7 +730,7 @@ section.votes {
   }
 
   a:hover {
-    color: $gray-medium-light;
+    color: $special-red;
     text-decoration: none;
   }
 
@@ -761,6 +801,7 @@ section.votes {
   color: $special-red;
   text-decoration: none;
 }
+
 
 /* for function calls */
 

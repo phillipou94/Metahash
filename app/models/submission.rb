@@ -10,9 +10,7 @@ class Submission < ActiveRecord::Base
   validates_presence_of :user_id
   validates_presence_of :postable
   validates_presence_of :trend_id
-  validates :content, presence: true, length: { minimum: 2, maximum: 420 }
-  # validates_presence_of :postable
-  #validates_presence_of :topic_id
+  validates :content, presence: true, length: { minimum: 2, maximum: 40020 }
   accepts_nested_attributes_for :postable
 
   def total_likes
