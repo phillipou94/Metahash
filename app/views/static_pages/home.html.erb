@@ -17,7 +17,7 @@
 
    <%= link_to "Signup", new_user_path, :class => "button grow" %>
   </div>
-  <% else %> 
+  <% else %>
   <div id="wrapper">
     <div id="sidebar-wrapper">
 
@@ -46,11 +46,7 @@
           <div class = "topic-title">#title</div>
         </div>
         <ul class="users post-float">
-
-          <% @topics.each do |topic| %>
-          <li><%= link_to topic.title, topic %></li>
-          <%= topic.summary %>
-          <% end %>
+          
         </ul>
       </div>
     </div>
@@ -81,7 +77,7 @@
   <%-# defined in static pages controller-%>
   <%-# name,query,url -%>
   <%= @trends.each do |trend| %>
-  <li> <%= trend["name"]%>  </li>   
+  <li> <%= trend["name"]%>  </li>
   <%end %>
 </ul>
 <%end %>

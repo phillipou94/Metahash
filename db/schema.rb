@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 20150113235530) do
     t.integer  "user_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.integer  "trend_id"
     t.string   "imageURL"
+    t.integer  "trend_id"
   end
 
   add_index "topics", ["user_id", "created_at"], name: "index_topics_on_user_id_and_created_at"
@@ -86,12 +86,11 @@ ActiveRecord::Schema.define(version: 20150113235530) do
     t.boolean  "liked"
     t.integer  "user_id"
     t.integer  "votable_id"
-    t.string   "votable_type"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "votes", ["user_id"], name: "index_votes_on_user_id"
-  add_index "votes", ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
+  add_index "votes", ["votable_id"], name: "index_votes_on_votable_id"
 
 end
