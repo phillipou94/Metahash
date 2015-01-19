@@ -10,15 +10,15 @@ class StaticPagesController < ApplicationController
 		data = access_token.request(:get, "https://api.twitter.com/1.1/trends/place.json?id=23424977")
 		
 		body = JSON.parse(data.body)
-		if body.any?
+		if body
 			trends =body.first["trends"]
 			trends.each do |element|
 				Trend.new(title:element["name"]).save
 			end 
 			@trends = Trend.last(10)
-
-
 			@topics = Topic.all.paginate(page: params[:page])
+			@first_trend = Trend.first
+			redirect_to trend_path(@first_trend.id)
 		end 
   end
 
