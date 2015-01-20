@@ -36,7 +36,7 @@
         <% Trend.last(10).each do |trend| %>
            <li><%= link_to trend.title, trend %></li>
         <% end %>
-        <li> <%=link_to "All Trends", trends_path %> </li>
+        
 
       </ul>
   </div>
@@ -51,34 +51,32 @@
         <div class="center jumbotron">
           <div class = "topic-title"><%=@current_trend.title%></div>
           <% if @current_trend.topics.any?%>
-            <%=render @topic %>
+            <%= render @topic %>
           <% else %>
+          <ul>
             <%= link_to_function "Create Topic", "$('#hide').toggleClass('hidden-topic-partial')" %>
 
             <div id="hide" class="hidden-topic-partial"> <%= render "topics/new_topic_form" %> </div>
+          </ul>
 
           <% end %>
+          <ul>
+          <%= link_to_function "Post", "$('#hide-submission').toggleClass('hidden-submission-partial')" %>
+          <div id="hide-submission" class="hidden-submission-partial"> <%= render "shared/submission_form" %> </div>
+          </ul>
+
           
 
         </div>
-        <ul class="users post-float">
-          <%= link_to_function "Post", "$('#hide-submission').toggleClass('hidden-submission-partial')" %>
-          <div id="hide-submission" class="hidden-submission-partial"> <%= render "shared/submission_form" %> </div>
 
-        </ul>
-        <ul>
-        <div class="class: list-group">
-          <% if @posts %>
-            <%= render @posts %>
-          <% end %>
-        </div>
-        </ul>
 
 
       </div>
     </div>
   </div>
 </div>
+
+<%= render @current_trend.submissions %>
 <!-- /#page-content-wrapper -->
 
 

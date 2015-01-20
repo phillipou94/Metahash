@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150113235530) do
+ActiveRecord::Schema.define(version: 20150119200746) do
 
   create_table "authentications", force: :cascade do |t|
     t.integer  "user_id"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20150113235530) do
     t.integer  "score",         default: 0
     t.integer  "topic_id"
     t.integer  "trend_id"
+    t.string   "title"
   end
 
   add_index "submissions", ["postable_type", "postable_id"], name: "index_submissions_on_postable_type_and_postable_id"

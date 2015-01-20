@@ -16,10 +16,18 @@ class StaticPagesController < ApplicationController
 				Trend.new(title:element["name"]).save
 			end
 			@trends = Trend.last(10)
+			@all_trends = Trend.all.order('created_at ASC')
+
+			## perform a paginated query:
+			@all_trends = Trend.paginate(:page => params[:page])
+			# or, use an explicit "per page" limit:
+			Trend.paginate(:page => params[:page], :per_page => 30)
+
 
 			@topics = Topic.all.paginate(page: params[:page])
 
 			@current_trend = @trends.first
+
 		end
   end
 

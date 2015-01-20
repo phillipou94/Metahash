@@ -21,16 +21,16 @@ class SubmissionsController < ApplicationController
     else
       @link.destroy
       redirect_to @current_trend
-      @topic = @current_topic
-      @submissions = @current_topic.submissions.paginate(page: params[:page])
-      render 'topics/show'
+      #@submissions = @current_topic.submissions.paginate(page: params[:page])
+      #render 'topics/show'
     end
   end
 
 
+
   private
   def submission_params
-    params.require(:submission).permit(:content)
+    params.require(:submission).permit(:content, :title)
   end
 
 end

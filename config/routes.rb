@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
-  root                'trends#index'
+  root                'static_pages#home'
 
   #get      'topics/new'
 

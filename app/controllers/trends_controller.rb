@@ -14,17 +14,20 @@ class TrendsController < ApplicationController
     		if @search_result
     			redirect_to trend_path(@search_result.id)
     		else
-    			@all_trends = Trend.all.order('created_at DESC')
+    			@all_trends = Trend.all.order('created_at ASC')
+
     			## perform a paginated query:
 				@all_trends = Trend.paginate(:page => params[:page])
 				# or, use an explicit "per page" limit:
 				Trend.paginate(:page => params[:page], :per_page => 30)
 
     		end
-    	else
-    		@all_trends = Trend.all.order('created_at DESC')
+
+	    	else
+    		@all_trends = Trend.all.order('created_at ASC')
+
     			## perform a paginated query:
-			@all_trends = Trend.paginate(:page => params[:page])
+			  @all_trends = Trend.paginate(:page => params[:page])
 				# or, use an explicit "per page" limit:
 			Trend.paginate(:page => params[:page], :per_page => 30)
 
