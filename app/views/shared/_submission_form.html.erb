@@ -5,9 +5,9 @@
       <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.label :title, class: "control-label" %>
-      <%= f.text_area :title, class: "form-control" %>
+      <%= f.text_field :title, class: "form-control" %>
 
-      <%= f.label :Comment, class: "control-label" %>
+      <%= f.label :Content, class: "control-label" %>
       <%= f.text_area :content, class: "form-control" %>
 
       <%= f.fields_for(Link.new) do |builder| %>

@@ -1,12 +1,4 @@
 <section class="submissions" id="submission-<%= submission.id %>">
-  <%= gravatar_for submission.user %>
-  <% if submission.trend  %>
-    <p> <%=link_to submission.user.username, submission.user, :class => "submission_link"%>
-    in
-    <b><%= link_to submission.trend.title,submission.trend, :class => "submission_link" %></b>
-    <%= time_ago_in_words(submission.created_at) %> ago
-    <p>
-  <% end %>
 
   <% if !(submission.postable.url === "")%>
   	<% if (submission.title)%>
@@ -20,6 +12,15 @@
   <% else %>
     <div class="submission_title"><%=submission.title%></div>
     <p class = "submission_content"><%=submission.content%></p>
+  <% end %>
+
+  <%= gravatar_for submission.user %>
+  <% if submission.trend  %>
+    <p> <%=link_to submission.user.username, submission.user, :class => "submission_link"%>
+    in
+    <b><%= link_to submission.trend.title,submission.trend, :class => "submission_link" %></b>
+    <%= time_ago_in_words(submission.created_at) %> ago
+    <p>
   <% end %>
 
 

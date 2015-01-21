@@ -60,14 +60,15 @@
           </ul>
 
           <% end %>
-          <ul>
-          <%= link_to_function "Post", "$('#hide-submission').toggleClass('hidden-submission-partial')" %>
-          <div id="hide-submission" class="hidden-submission-partial"> <%= render "shared/submission_form" %> </div>
-          </ul>
 
           
 
         </div>
+
+          <ul>
+          <%= link_to_function "Post", "$('#hide-submission').toggleClass('hidden-submission-partial')" %>
+          <div id="hide-submission" class="hidden-submission-partial"> <%= render "shared/submission_form" %> </div>
+          </ul>
 
 
 
