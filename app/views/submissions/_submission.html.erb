@@ -14,7 +14,7 @@
     <p class = "submission_content"><%=submission.content%></p>
   <% end %>
 
-  <%= gravatar_for submission.user %>
+  <%= gravatar_for(submission.user,20) %>
   <% if submission.trend  %>
     <p> <%=link_to submission.user.username, submission.user, :class => "submission_link"%>
     in

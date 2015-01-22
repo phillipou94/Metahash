@@ -19,6 +19,7 @@
 
   });
 </script>
+
 </head>
 
 <body>
@@ -64,11 +65,13 @@
           
 
         </div>
+          
+          <input class = "post_button post_grow" type="button" value="Post" onClick="$('#hide-submission').toggleClass('hidden-submission-partial');" />
+          
 
-          <ul>
-          <%= link_to_function "Post", "$('#hide-submission').toggleClass('hidden-submission-partial')" %>
-          <div id="hide-submission" class="hidden-submission-partial"> <%= render "shared/submission_form" %> </div>
-          </ul>
+            <div id="hide-submission" class="hidden-submission-partial"> <%= render "shared/submission_form" %> </div>
+
+          </div>
 
 
 
