@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150119200746) do
+ActiveRecord::Schema.define(version: 20150121085634) do
 
   create_table "authentications", force: :cascade do |t|
     t.integer  "user_id"
@@ -78,20 +78,22 @@ ActiveRecord::Schema.define(version: 20150119200746) do
     t.string   "remember_digest"
     t.boolean  "is_admin",        default: false
     t.boolean  "is_editor",       default: false
+    t.integer  "reputation"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["username"], name: "index_users_on_username", unique: true
 
   create_table "votes", force: :cascade do |t|
-    t.boolean  "liked"
+    t.boolean  "upvote"
     t.integer  "user_id"
     t.integer  "votable_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "votable_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_index "votes", ["user_id"], name: "index_votes_on_user_id"
-  add_index "votes", ["votable_id"], name: "index_votes_on_votable_id"
+  add_index "votes", ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
 
 end

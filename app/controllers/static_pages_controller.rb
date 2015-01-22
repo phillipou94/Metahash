@@ -7,19 +7,24 @@ class StaticPagesController < ApplicationController
 
   		access_token = prepare_access_token("2285360612-IYtenRkqB5FYSzUkeElInRRLfvbio8pvkoRASu7", "IfyCV2Ltiw2xQajJcymuu7QIhSOMhB1kL2x63MSMQTTzX")
 		# use the access token as an agent to get the home timeline
-		data = access_token.request(:get, "https://api.twitter.com/1.1/trends/place.json?id=23424977")
 
-		body = JSON.parse(data.body)
-		if body.any?
-			trends =body.first["trends"]
-			trends.each do |element|
-				Trend.new(title:element["name"]).save
+
+		if Trend.last.created_at < 20.minute.ago || Trend.count === 0
+			data = access_token.request(:get, "https://api.twitter.com/1.1/trends/place.json?id=23424977")
+			body = JSON.parse(data.body)
+			if body.any?
+				trends =body.first["trends"]
+				trends.each do |element|
+					Trend.new(title:element["name"]).save
+				end
 			end
+		end
+
 			@trends = Trend.last(10)
-			@all_trends = Trend.all.order('created_at ASC')
+			@all_trends = Trend.all.order('created_at DESC').paginate(:page => params[:page])
 
 			## perform a paginated query:
-			@all_trends = Trend.paginate(:page => params[:page])
+			# @all_trends = Trend.paginate(:page => params[:page])
 			# or, use an explicit "per page" limit:
 			Trend.paginate(:page => params[:page], :per_page => 30)
 
@@ -27,8 +32,6 @@ class StaticPagesController < ApplicationController
 			@topics = Topic.all.paginate(page: params[:page])
 
 			@current_trend = @trends.first
-
-		end
   end
 
 
