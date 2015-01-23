@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
 $gray-medium-light: #eaeaea;
 $upvote-color: #FF4500;
 $downvote-color: #5F99CF;
@@ -624,9 +625,9 @@ span.picture {
 /* posts partial */
 
 .submissions {
-  margin-left: 70px;
-  margin-right :70px;
-  margin-bottom: 30px;
+  margin-left: 10px;
+  margin-right :10px;
+  margin-bottom: 25px;
   padding: 20%;
 
 }
@@ -635,13 +636,15 @@ span.picture {
   font-family: ElegantLux;
   font-weight: bold;
   font-size:35px;
+  margin-top: 20px;
   margin-bottom: 25px;
+  margin-left:20px;
 }
 
 .submission_content {
   font-size: 12px;
-  margin-left: 80px;
-  margin-right: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .submission_link:hover {
@@ -655,8 +658,8 @@ span.picture {
 .gravatar {
 
   border-radius: 50%;
-  width: 55px;
-  height:55px;
+  /*width: 20px;
+  height:20px;*/
   margin-left:15px;
 }
 
@@ -683,7 +686,30 @@ span.picture {
   }
 }
 
+/* Users Partial */
+
+.profile_partial {
+  margin-top:50px;
+}
+
+.profile_partial_title {
+  margin-top:30px;
+  font-family: ElegantLux;
+  font-size: 50px;
+  margin-bottom:10px;
+}
+
+.profile_partial_info {
+  margin-left: 15px;
+}
+
 /* submissions */
+
+.submissions {
+
+  margin-left:80px;
+  margin-right:80px;
+}
 
 section.submissions {
   @include section_sizing;
@@ -808,3 +834,145 @@ section.votes {
 .hidden-topic-partial { display:none}
 
 .hidden-submission-partial { display:none}
+
+.post_button {
+    position: relative;
+    left: 35%;
+    display: inline-block;
+    padding: 10px;
+    background-color: white;
+    text-decoration: none;
+    text-align:center;
+    font-family: ElegantLux;
+    font-size: 20px;
+    color: $special-red;
+    border:$special-blue;
+    border-style: solid;
+    border-width: 2px;
+    width:350px;
+    height:10px;
+}
+
+.post_grow {
+  display: inline-block;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  color: $special-red;
+  background-color: transparent;
+  text-decoration: none;
+}
+.post_grow:hover, .post_grow:focus, .post_grow:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+
+  background-color: white;
+  color: $special-red;
+  text-decoration: none;
+}
+
+
+/* posts */
+
+.content-float {
+  margin-top: 20px;
+  background-color:#FAFAFA;
+  border-radius: 5px;
+}
+
+.post-item {
+  padding: 20px 0px;
+  .col {
+    padding-left: 0px;
+  }
+  .vote-btn {
+    padding-left: 0px;
+    background-color:#FAFAFA;
+    margin: 0px;
+    size: 20px;
+    border: 0px;
+  }
+  .left{
+
+  }
+  .middle{
+    padding-left: 11px;
+
+  }
+  .right{
+    width: 100%;
+  }
+}
+
+.posts {
+  list-style: none;
+  padding: 0px;
+  li {
+    padding: 10px 0px;
+    /* border-top: 1px solid #e8e8e8; */
+  }
+  .content {
+    display: block;
+    margin-left: 60px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+  .gravatar {
+    float: left;
+    margin-left:10px;
+    margin-right: 10px;
+    margin-top: -5px;
+  }
+}
+
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+span.picture {
+  margin-top: 10px;
+  input {
+    border: 0;
+  }
+}
+
+/* table */
+
+.table {
+  .left {
+    float: left;
+    width:60%;
+
+    padding-top: 20px;
+    margin-top: 20px;
+    box-shadow: 0px 3px 5px gray;
+    border-radius: 5px;
+    padding-bottom: 30px;
+  }
+  .right {
+    float: right;
+    width: 38%;
+
+    padding-top: 20px;
+    margin-top: 20px;
+    box-shadow: 0px 3px 5px gray;
+    border-radius: 5px;
+    padding-bottom: 30px;
+  }
+  .row {
+    width: 100%;
+  }
+}

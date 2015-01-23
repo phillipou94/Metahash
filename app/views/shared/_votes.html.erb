@@ -7,8 +7,11 @@
                                        remote: true,
                                        class: voteClasses[0]
                                         %>
-  <br>
-  <%= link_to "&#9660;".html_safe, votes_path( { upvote: false,
+
+<br>
+<%=votable.total_upvotes%>
+<br>
+<%= link_to "&#9660;".html_safe, votes_path( { upvote: false,
                                        votable_id: votable.id }),
                                        method: :post,
                                        remote: true,

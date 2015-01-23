@@ -6,7 +6,7 @@ class Submission < ActiveRecord::Base
 
   has_many :votes, as: :votable
 
-  default_scope -> { order(created_at: :desc) }
+  default_scope -> { order(created_at: :DESC) }
   validates_presence_of :user_id
   validates_presence_of :postable
   validates_presence_of :trend_id

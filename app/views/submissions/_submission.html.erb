@@ -1,29 +1,35 @@
+
+
 <section class="submissions" id="submission-<%= submission.id %>">
+
+
   <section class="votes" id="vote-<%= submission.id %>">
     <%= render "shared/votes", votable: submission %>
   </section>
-  <%= gravatar_for submission.user %>
 
+  
+  <% if !(submission.postable.url === "")%>
+  <% if (submission.title)%>
+  <div class="submission_title"><%= link_to submission.title, submission.postable.url, :class => "submission_link" %></div>
+  <p class = "submission_content"><%=submission.content%></p>
 
+  <% else %>
+  <p class = "submission_content"><%= link_to submission.content, submission.postable.url, :class => "submission_link"%></p>
+
+  <% end %>
+  <% else %>
+  <div class="submission_title"><%=submission.title%></div>
+  <p class = "submission_content"><%=submission.content%></p>
+  <% end %>
+
+  <%= gravatar_for(submission.user,20) %>
   <% if submission.trend  %>
-    <p> <%=link_to submission.user.username, submission.user, :class => "submission_link"%>
+  <p> <%=link_to submission.user.username, submission.user, :class => "submission_link"%>
     in
     <b><%= link_to submission.trend.title,submission.trend, :class => "submission_link" %></b>
     <%= time_ago_in_words(submission.created_at) %> ago
     <p>
-  <% end %>
-
-
-
-  <% if !(submission.postable.url === "")%>
-  		<p class = "submission_title"><%= link_to submission.content, submission.postable.url, :class => "submission_link"%></p>
-  <% else %>
-    <p class = "submission_title"><%=submission.content%></p>
-  <% end %>
-
-  <h3>
-    <%= "#{submission.total_upvotes} upvotes" %>
-  </h3>
+      <% end %>
 
 
 </section>
