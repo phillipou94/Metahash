@@ -1,0 +1,8 @@
+
+
+<div class = "profile_partial_title"> <%= link_to gravatar_for(@user,50), @user %><%=@user.username%></div>
+<br>
+<br>
+<h4 class = "profile_partial_info">Rank: </h4>
+<h4 class = "profile_partial_info">Points: <%= @user.reputation%> </h4>
+<h4 class = "profile_partial_info">Posts: <%=@user.submissions.count%> </h4>

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :votes,           only: [:create, :destroy]
   resources :topics,      only: [:index, :new, :create, :destroy, :show]
   #resources :submissions,     only: [:show, :index]
-  resources :trends, only: [:index, :new, :create, :destroy, :show] do 
+  resources :trends, only: [:index, :new, :create, :destroy, :show] do
      resources :submissions,   only: [:new, :create, :destroy]
      resources :topics, only: [:new, :create, :destroy]
 

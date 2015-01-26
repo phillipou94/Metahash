@@ -1,5 +1,4 @@
-
-<head> 
+<head>
 
 <script type="text/javascript" src="tinymce/js/tinymce/tinymce.min.js"></script>
   <script type="text/javascript">
@@ -8,9 +7,7 @@
       });
   </script>
 
-
 <script src="assets/javascripts/jquery.js"></script>
-
 
 <script>
   $("#menu-toggle").click(function(e) {
@@ -19,10 +16,11 @@
 
   });
 </script>
+
 </head>
 
 <body>
-  <% if logged_in? %> 
+  <% if logged_in? %>
   <div id="wrapper">
     <div id="sidebar-wrapper">
 
@@ -31,12 +29,12 @@
         <li class="sidebar-brand">
           <a href="#" id="Trending-Banner">   </a>
         </li>
-              
+
         <%-#load_trends is in static pages helper %>
         <% Trend.last(10).each do |trend| %>
            <li><%= link_to trend.title, trend %></li>
         <% end %>
-        
+
 
       </ul>
   </div>
@@ -60,14 +58,17 @@
           </ul>
 
           <% end %>
-          <ul>
-          <%= link_to_function "Post", "$('#hide-submission').toggleClass('hidden-submission-partial')" %>
-          <div id="hide-submission" class="hidden-submission-partial"> <%= render "shared/submission_form" %> </div>
-          </ul>
 
-          
+
 
         </div>
+          
+          <input class = "post_button post_grow" type="button" value="Post" onClick="$('#hide-submission').toggleClass('hidden-submission-partial');" />
+          
+
+            <div id="hide-submission" class="hidden-submission-partial"> <%= render "shared/submission_form" %> </div>
+
+          </div>
 
 
 
@@ -89,7 +90,7 @@
   <%-# defined in static pages controller-%>
   <%-# name,query,url -%>
   <%= @trends.each do |trend| %>
-  <li> <%= trend["name"]%>  </li>   
+  <li> <%= trend["name"]%>  </li>
   <%end %>
 </ul>
 <%end %>

@@ -5,31 +5,35 @@ class TrendsController < ApplicationController
   		@posts = @current_trend.submissions
   		@topic = @current_trend.topics
   		@current_topic = @current_trend.topics
-  	end
+  end
 
-  	def index
+  def index
   		if params[:search]
   			search_parameter = params[:search].delete '#'
     		@search_result = Trend.search(search_parameter).order("created_at ASC").first
     		if @search_result
     			redirect_to trend_path(@search_result.id)
-    		else 
+    		else
     			@all_trends = Trend.all.order('created_at ASC')
+
     			## perform a paginated query:
 				@all_trends = Trend.paginate(:page => params[:page])
 				# or, use an explicit "per page" limit:
 				Trend.paginate(:page => params[:page], :per_page => 30)
-    			
+
     		end
-    	else 
+
+	    	else
     		@all_trends = Trend.all.order('created_at ASC')
+
     			## perform a paginated query:
 			  @all_trends = Trend.paginate(:page => params[:page])
 				# or, use an explicit "per page" limit:
 			Trend.paginate(:page => params[:page], :per_page => 30)
 
-    		
+
   		end
 	end
+
 
 end
