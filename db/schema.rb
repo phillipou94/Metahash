@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(version: 20150119200746) do
     t.integer  "user_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.integer  "trend_id"
     t.string   "imageURL"
+    t.integer  "trend_id"
   end
 
   add_index "topics", ["user_id", "created_at"], name: "index_topics_on_user_id_and_created_at"
